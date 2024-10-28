@@ -1,24 +1,36 @@
+-- Tablas Nuevas --
 CREATE TABLE ciudades (
-    codigociudad INTEGER NOT NULL,
-    nombreciudad VARCHAR(30) NOT NULL,
-    PRIMARY KEY (codigociudad)
-);
-
-CREATE TABLE bodegas (
-    nombrebodega VARCHAR(30) NOT NULL,
-    tamanio FLOAT(6) NOT NULL,
-    sucursal_nombre VARCHAR(30) NOT NULL,
-    PRIMARY KEY (nombrebodega)
+    codigo INTEGER NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    PRIMARY KEY (codigo)
 );
 
 CREATE TABLE sucursales (
-    nombresucursal VARCHAR(30) NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
     tamanio FLOAT(6) NOT NULL,
     direccion VARCHAR(40) NOT NULL,
     telefono INTEGER NOT NULL,
-    ciudad_codigo INTEGER NOT NULL,
-    PRIMARY KEY (nombresucursal)
+    codigo_ciudad INTEGER NOT NULL,
+    PRIMARY KEY (nombre)
 );
+
+ALTER TABLE sucursales
+    ADD CONSTRAINT sucursal_ciudad_fk FOREIGN KEY (codigo_ciudad) REFERENCES ciudades (codigo);
+
+CREATE TABLE bodegas (
+    nombre VARCHAR(30) NOT NULL,
+    tamanio FLOAT(6) NOT NULL,
+    nombre_sucursal VARCHAR(30) NOT NULL,
+    PRIMARY KEY (nombre)
+);
+
+ALTER TABLE bodegas
+    ADD CONSTRAINT bodega_sucursal_fk FOREIGN KEY (nombre_sucursal) REFERENCES sucursales (nombre);
+
+
+
+-- Tablas Viejas --
+
 
 CREATE TABLE categorias (
     codigocategoria INTEGER NOT NULL,
@@ -104,9 +116,6 @@ CREATE TABLE ofrecen (
 );
 
 
-ALTER TABLE bodegas
-    ADD CONSTRAINT bodega_sucursal_fk FOREIGN KEY (sucursal_nombre) REFERENCES sucursales (nombresucursal);
-
 ALTER TABLE inventarioproductos
     ADD CONSTRAINT inventarioproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
 
@@ -140,8 +149,6 @@ ALTER TABLE recepciondeproductos
 ALTER TABLE recepciondeproductos
     ADD CONSTRAINT recepciondeproducto_ordendecompra_fk FOREIGN KEY (ordendecompra_codigo) REFERENCES ordendecompras (codigo);
 
-ALTER TABLE sucursales
-    ADD CONSTRAINT sucursal_ciudad_fk FOREIGN KEY (ciudad_codigo) REFERENCES ciudades (codigociudad);
 
 ALTER TABLE ofrecen
     ADD CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit);

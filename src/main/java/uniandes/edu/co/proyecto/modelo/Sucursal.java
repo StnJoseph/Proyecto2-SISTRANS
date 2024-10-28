@@ -10,6 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "sucursales")
 public class Sucursal {
     
+    //Atributos
     @Id
     private String nombre;
     private Float tamanio;
@@ -17,59 +18,60 @@ public class Sucursal {
     private Integer telefono;
 
     @ManyToOne
-    @JoinColumn(name = "ciudad_codigo", referencedColumnName = "codigo")
-    private Ciudad ciudad;
+    @JoinColumn(name = "codigo_ciudad", referencedColumnName = "codigo")
+    private Ciudad codigo_ciudad;
 
-    public Sucursal() {
-        // Default constructor
-    }
-
-    public Sucursal(String nombre, Float tamanio, String direccion, Integer telefono, Ciudad ciudad) {
+    //Constructor
+    public Sucursal(String nombre, Float tamanio, String direccion, Integer telefono, Ciudad codigo_ciudad) {
         this.nombre = nombre;
         this.tamanio = tamanio;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.ciudad = ciudad;
+        this.codigo_ciudad = codigo_ciudad;
     }
+    
+    //Constructor vacio
+    public Sucursal() {;}
 
-    // Getters y Setters
+    //GETTERS
     public String getNombre() {
         return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public Float getTamanio() {
         return tamanio;
     }
 
-    public void setTamanio(Float tamanio) {
-        this.tamanio = tamanio;
-    }
-
     public String getDireccion() {
         return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public Integer getTelefono() {
         return telefono;
     }
 
+    public Ciudad getCiudad() {
+        return codigo_ciudad;
+    }
+
+    //SETTERS
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTamanio(Float tamanio) {
+        this.tamanio = tamanio;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
 
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
-        this.ciudad = ciudad;
+    public void setCiudad(Ciudad codigo_ciudad) {
+        this.codigo_ciudad = codigo_ciudad;
     }
 }
