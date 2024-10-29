@@ -7,7 +7,7 @@ CREATE TABLE ciudades (
 
 CREATE TABLE sucursales (
     nombre VARCHAR(30) NOT NULL,
-    tamanio FLOAT(6) NOT NULL,
+    tamanio INTEGER NOT NULL,
     direccion VARCHAR(40) NOT NULL,
     telefono INTEGER NOT NULL,
     codigo_ciudad INTEGER NOT NULL,
@@ -19,7 +19,7 @@ ALTER TABLE sucursales
 
 CREATE TABLE bodegas (
     nombre VARCHAR(30) NOT NULL,
-    tamanio FLOAT(6) NOT NULL,
+    tamanio INTEGER NOT NULL,
     nombre_sucursal VARCHAR(30) NOT NULL,
     PRIMARY KEY (nombre)
 );
@@ -28,17 +28,40 @@ ALTER TABLE bodegas
     ADD CONSTRAINT bodega_sucursal_fk FOREIGN KEY (nombre_sucursal) REFERENCES sucursales (nombre);
 
 
+CREATE TABLE proveedores (
+    nit INTEGER NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    direccion VARCHAR(30) NOT NULL,
+    nombre_contacto VARCHAR(50) NOT NULL,
+    telefono_contacto INTEGER NOT NULL,
+    PRIMARY KEY (nit)
+);
+
+CREATE TABLE categorias (
+    codigo INTEGER NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    descripcion VARCHAR(50) NOT NULL,
+    caracteristicas_almacenamiento VARCHAR(50) NOT NULL,
+    PRIMARY KEY (codigo)
+);
+
+CREATE TABLE productos (
+    codigo_de_barras VARCHAR(10) NOT NULL,
+    nombre VARCHAR(30) NOT NULL,
+    costo_en_bodega NUMBER NOT NULL,
+    precio_unitario NUMBER NOT NULL,
+    presentacion VARCHAR(30) NOT NULL,
+    cantidad_presentacion INTEGER NOT NULL,
+    unidad_de_medida VARCHAR(20) NOT NULL,
+    volumen NUMBER NOT NULL,
+    peso NUMBER NOT NULL,
+    categoria_codigo INTEGER NOT NULL,
+    PRIMARY KEY (codigo_de_barras)
+);
+
 
 -- Tablas Viejas --
 
-
-CREATE TABLE categorias (
-    codigocategoria INTEGER NOT NULL,
-    nombrecategoria VARCHAR(30) NOT NULL,
-    descripcion VARCHAR(50) NOT NULL,
-    caracteristicasalmacenamiento VARCHAR(50) NOT NULL,
-    PRIMARY KEY (codigocategoria)
-);
 
 CREATE TABLE inventarioproductos (
     costopromedio FLOAT(10) NOT NULL,

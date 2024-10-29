@@ -15,7 +15,7 @@ public interface CiudadRepository extends JpaRepository<Ciudad, Integer> {
     @Modifying
     @Transactional
     @Query(value = "INSERT INTO ciudades (codigo, nombre) VALUES (:codigo, :nombre)", nativeQuery = true)
-    void insertCiudad(@Param("codigo") int codigo, @Param("nombre") String nombre);
+    void insertCiudad(@Param("codigo") Integer codigo, @Param("nombre") String nombre);
 
     @Query(value = "SELECT * FROM ciudades", nativeQuery = true)
     Collection<Ciudad> findAllCiudades();

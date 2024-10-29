@@ -13,7 +13,7 @@ public class Sucursal {
     //Atributos
     @Id
     private String nombre;
-    private Float tamanio;
+    private Integer tamanio;
     private String direccion;
     private Integer telefono;
 
@@ -22,7 +22,7 @@ public class Sucursal {
     private Ciudad codigo_ciudad;
 
     //Constructor
-    public Sucursal(String nombre, Float tamanio, String direccion, Integer telefono, Ciudad codigo_ciudad) {
+    public Sucursal(String nombre, Integer tamanio, String direccion, Integer telefono, Ciudad codigo_ciudad) {
         this.nombre = nombre;
         this.tamanio = tamanio;
         this.direccion = direccion;
@@ -38,7 +38,7 @@ public class Sucursal {
         return nombre;
     }
 
-    public Float getTamanio() {
+    public Integer getTamanio() {
         return tamanio;
     }
 
@@ -46,7 +46,7 @@ public class Sucursal {
         return direccion;
     }
 
-    public Integer getTelefono() {
+    public Integer  getTelefono() {
         return telefono;
     }
 
@@ -59,7 +59,7 @@ public class Sucursal {
         this.nombre = nombre;
     }
 
-    public void setTamanio(Float tamanio) {
+    public void setTamanio(Integer tamanio) {
         this.tamanio = tamanio;
     }
 
@@ -67,7 +67,7 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(Integer  telefono) {
         this.telefono = telefono;
     }
 

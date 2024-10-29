@@ -9,45 +9,38 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.modelo.Ciudad;
-import uniandes.edu.co.proyecto.modelo.Sucursal;
+import uniandes.edu.co.proyecto.modelo.Proveedor;
+import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository;
+import uniandes.edu.co.proyecto.repositorio.CategoriaRepository;
 import uniandes.edu.co.proyecto.repositorio.CiudadRepository;
+import uniandes.edu.co.proyecto.repositorio.ProductoRepository;
+import uniandes.edu.co.proyecto.repositorio.ProveedorRepository;
 import uniandes.edu.co.proyecto.repositorio.SucursalRepository;
 
 @SpringBootApplication
 public class ProyectoApplication implements CommandLineRunner{
 
 	@Autowired
-	private BodegaRepository x;
+	private ProductoRepository x;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
 
-
 	@Override
 	public void run(String... arg)
 	{
-		// float y =  5200;
-		// x.insertBodega("Bodega X", y, "Sucursal C");
-
-		// Collection<Bodega> elemento = x.findAllBodegas();
-		// for (Bodega b: elemento)
+		// Collection<Producto> elemento = x.findAllProductos();
+		// for (Producto b: elemento)
 		// {
 		// 	System.out.println("");
+		// 	System.out.println(b.getCodigoDeBarras());
 		// 	System.out.println(b.getNombre());
 		// }
 
-		x.deleteBodega("Bodega X");
-
-		Collection<Bodega> elemento2 = x.findAllBodegas();
-		for (Bodega b: elemento2)
-		{
-			System.out.println("");
-			System.out.println(b.getNombre());
-
-
-		}
+		//System.out.println(x.findProductoByCodigoDeBarras("0000000002").getNombre());
+		x.updateProducto("0000000003", "Producto C", 4500.0, 2000.0, "Unidad", 4, "ml", 4.5, 8.0, 2);
 	}
 
 }
