@@ -1,30 +1,31 @@
 -- Datos Nuevos --
-INSERT INTO ciudades (codigociudad, nombreciudad) 
+
+INSERT INTO ciudades (codigo, nombre) 
 VALUES (1, 'Bogotá');
 
-INSERT INTO ciudades (codigociudad, nombreciudad) 
+INSERT INTO ciudades (codigo, nombre) 
 VALUES (2, 'Medellín');
 
-INSERT INTO ciudades (codigociudad, nombreciudad) 
+INSERT INTO ciudades (codigo, nombre) 
 VALUES (3, 'Barranquilla');
 
 INSERT INTO sucursales (nombre, tamanio, direccion, telefono, codigo_ciudad) 
-VALUES ('Sucursal A', 1000, 'Calle 123', 1234567, 1);
+VALUES ('Sucursal A', 1000.0, 'Calle 123', 1234567, 1);
 
 INSERT INTO sucursales (nombre, tamanio, direccion, telefono, codigo_ciudad) 
-VALUES ('Sucursal B', 1500, 'Carrera 45', 7654321, 2);
+VALUES ('Sucursal B', 1500.0, 'Carrera 45', 7654321, 2);
 
 INSERT INTO sucursales (nombre, tamanio, direccion, telefono, codigo_ciudad) 
-VALUES ('Sucursal C', 4500, 'Carrera 15', 1234567, 2);
+VALUES ('Sucursal C', 4500.0, 'Carrera 15', 1234567, 2);
 
 INSERT INTO bodegas (nombre, tamanio, nombre_sucursal) 
-VALUES ('Bodega Central', 5000, 'Sucursal A');
+VALUES ('Bodega Central', 5000.0, 'Sucursal A');
 
 INSERT INTO bodegas (nombre, tamanio, nombre_sucursal) 
-VALUES ('Bodega Norte', 3000, 'Sucursal B');
+VALUES ('Bodega Norte', 3000.0, 'Sucursal B');
 
 INSERT INTO bodegas (nombre, tamanio, nombre_sucursal) 
-VALUES ('Bodega Oriental', 4500, 'Sucursal C');
+VALUES ('Bodega Oriental', 4500.0, 'Sucursal C');
 
 INSERT INTO proveedores (nit, nombre, direccion, nombre_contacto, telefono_contacto) 
 VALUES (123456789, 'Proveedor Uno', 'Avenida 1', 'Augusto', 300123456);
@@ -56,6 +57,11 @@ VALUES ('0000000002', 'Producto B', 1500.0, 1800.0, 'Bolsa', 5, 'ml', 1.5, 2.0, 
 INSERT INTO productos (codigo_de_barras, nombre, costo_en_bodega, precio_unitario, presentacion, cantidad_presentacion, unidad_de_medida, volumen, peso, categoria_codigo) 
 VALUES ('0000000003', 'Producto C', 4500.0, 2000.0, 'Ziplock', 4, 'ml', 4.5, 8.0, 2);
 
+INSERT INTO ordenesdecompra (codigo, fechacreacion, fechaentrega, estado, proveedor_nit, sucursal_nombre) 
+VALUES (1, TO_DATE('2020-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-10', 'YYYY-MM-DD'), 'VIGENTE', '123456789', 'Sucursal B');
+
+INSERT INTO ordenesdecompra (codigo, fechacreacion, fechaentrega, estado, proveedor_nit, sucursal_nombre) 
+VALUES (2, TO_DATE('2022-01-01', 'YYYY-MM-DD'), TO_DATE('2024-01-10', 'YYYY-MM-DD'), 'VIGENTE', '138765892', 'Sucursal A');
 
 -- Datos Viejos --
 

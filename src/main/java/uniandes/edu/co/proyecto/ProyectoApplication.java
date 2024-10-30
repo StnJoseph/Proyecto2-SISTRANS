@@ -1,5 +1,10 @@
 package uniandes.edu.co.proyecto;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,38 +14,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import uniandes.edu.co.proyecto.modelo.Bodega;
 import uniandes.edu.co.proyecto.modelo.Ciudad;
+import uniandes.edu.co.proyecto.modelo.OrdenDeCompra;
 import uniandes.edu.co.proyecto.modelo.Proveedor;
+import uniandes.edu.co.proyecto.modelo.Sucursal;
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository;
 import uniandes.edu.co.proyecto.repositorio.CategoriaRepository;
 import uniandes.edu.co.proyecto.repositorio.CiudadRepository;
+import uniandes.edu.co.proyecto.repositorio.OrdenDeCompraRepository;
 import uniandes.edu.co.proyecto.repositorio.ProductoRepository;
 import uniandes.edu.co.proyecto.repositorio.ProveedorRepository;
 import uniandes.edu.co.proyecto.repositorio.SucursalRepository;
 
 @SpringBootApplication
-public class ProyectoApplication implements CommandLineRunner{
-
-	@Autowired
-	private ProductoRepository x;
+public class ProyectoApplication{
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoApplication.class, args);
 	}
-
-	@Override
-	public void run(String... arg)
-	{
-		// Collection<Producto> elemento = x.findAllProductos();
-		// for (Producto b: elemento)
-		// {
-		// 	System.out.println("");
-		// 	System.out.println(b.getCodigoDeBarras());
-		// 	System.out.println(b.getNombre());
-		// }
-
-		//System.out.println(x.findProductoByCodigoDeBarras("0000000002").getNombre());
-		x.updateProducto("0000000003", "Producto C", 4500.0, 2000.0, "Unidad", 4, "ml", 4.5, 8.0, 2);
-	}
-
 }

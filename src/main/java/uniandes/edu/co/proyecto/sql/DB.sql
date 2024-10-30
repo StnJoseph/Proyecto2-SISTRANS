@@ -59,6 +59,21 @@ CREATE TABLE productos (
     PRIMARY KEY (codigo_de_barras)
 );
 
+CREATE TABLE ordenesdecompra (
+    codigo INTEGER NOT NULL,
+    fechacreacion DATE NOT NULL,
+    fechaentrega DATE NOT NULL,
+    estado VARCHAR(20) NOT NULL,
+    proveedor_nit INTEGER NOT NULL,
+    sucursal_nombre  VARCHAR(20) NOT NULL,
+    PRIMARY KEY (codigo)
+);
+
+ALTER TABLE ordenesdecompra
+    ADD CONSTRAINT ordendecompra_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit);
+
+ALTER TABLE ordenesdecompra
+    ADD CONSTRAINT ordendecompra_sucursal_fk FOREIGN KEY (sucursal_nombre) REFERENCES sucursales (nombre);
 
 -- Tablas Viejas --
 
@@ -86,13 +101,13 @@ CREATE TABLE noperecederos (
     PRIMARY KEY (codigocategoria)
 );
 
-CREATE TABLE ordendecompras (
+CREATE TABLE ordenesdecompras (
     codigo INTEGER NOT NULL,
     fechacreacion DATE NOT NULL,
     fechaentrega DATE NOT NULL,
     estado VARCHAR(20) NOT NULL,
     proveedor_nit VARCHAR(9) NOT NULL,
-    sucursal_nombre VARCHAR(30) NOT NULL,
+    sucursal_nombre INTEGER NOT NULL,
     PRIMARY KEY (codigo)
 );
 
