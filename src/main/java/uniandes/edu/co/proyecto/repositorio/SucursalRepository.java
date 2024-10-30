@@ -13,7 +13,7 @@ import uniandes.edu.co.proyecto.modelo.Sucursal;
 public interface SucursalRepository extends JpaRepository<Sucursal, String> {
 
     @Query(value = "SELECT * FROM sucursales", nativeQuery = true)
-    Collection<Sucursal> findAllSucursales();
+    Collection<Sucursal> findAllSucursales();   
 
     @Modifying
     @Transactional

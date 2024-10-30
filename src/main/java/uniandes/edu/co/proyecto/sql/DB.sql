@@ -117,28 +117,6 @@ CREATE TABLE perecederos (
     PRIMARY KEY (codigocategoria)
 );
 
-CREATE TABLE productos (
-    codigodebarras VARCHAR(10) NOT NULL,
-    nombreproducto VARCHAR(30) NOT NULL,
-    costoenbodega INTEGER NOT NULL,
-    preciounitario INTEGER NOT NULL,
-    presentacion VARCHAR(30) NOT NULL,
-    cantidadpresentacion INTEGER NOT NULL,
-    unidaddemedida VARCHAR(20) NOT NULL,
-    volumen FLOAT(6) NOT NULL,
-    peso FLOAT(6) NOT NULL,
-    categoria_codigo INTEGER NOT NULL,
-    PRIMARY KEY (codigodebarras)
-);
-
-CREATE TABLE proveedores (
-    nit VARCHAR(9) NOT NULL,
-    nombreproveedor VARCHAR(30) NOT NULL,
-    direccion VARCHAR(30) NOT NULL,
-    nombrecontacto VARCHAR(50) NOT NULL,
-    telefonocontacto INTEGER NOT NULL,
-    PRIMARY KEY (nit)
-);
 
 CREATE TABLE recepciondeproductos (
     idrecepcion INTEGER NOT NULL,
