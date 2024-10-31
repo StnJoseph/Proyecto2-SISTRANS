@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class Producto {
     //Atributos
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String codigoDeBarras;
+    
+    private String codigo_de_barras;
     private String nombre;
     private Double costoEnBodega;
     private Double precioUnitario;
@@ -30,8 +32,8 @@ public class Producto {
     private Categoria categoria_codigo;
 
     //Constructor
-    public Producto(String codigoDeBarras, String nombre, Double costoEnBodega, Double precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadDeMedida, Double peso, Double volumen, Categoria categoria_codigo) {
-        this.codigoDeBarras = codigoDeBarras;
+    public Producto(String codigo_de_barras, String nombre, Double costoEnBodega, Double precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadDeMedida, Double peso, Double volumen, Categoria categoria_codigo) {
+        this.codigo_de_barras = codigo_de_barras;
         this.nombre = nombre;
         this.costoEnBodega = costoEnBodega;
         this.precioUnitario = precioUnitario;
@@ -48,7 +50,7 @@ public class Producto {
 
     //GETTERS
     public String getCodigoDeBarras() {
-        return codigoDeBarras;
+        return codigo_de_barras;
     }
 
     public String getNombre() {
@@ -88,8 +90,8 @@ public class Producto {
     }
 
     //SETTERS
-    public void setCodigoDeBarras(String codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
+    public void setCodigoDeBarras(String codigo_de_barras) {
+        this.codigo_de_barras = codigo_de_barras;
     }
 
     public void setNombre(String nombre) {

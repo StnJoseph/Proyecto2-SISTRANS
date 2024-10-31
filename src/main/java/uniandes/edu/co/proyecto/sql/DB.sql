@@ -61,8 +61,8 @@ CREATE TABLE productos (
 
 CREATE TABLE ordenesdecompra (
     codigo INTEGER NOT NULL,
-    fechacreacion DATE NOT NULL,
-    fechaentrega DATE NOT NULL,
+    fecha_creacion DATE NOT NULL,
+    fecha_entrega DATE NOT NULL,
     estado VARCHAR(20) NOT NULL,
     proveedor_nit INTEGER NOT NULL,
     sucursal_nombre  VARCHAR(20) NOT NULL,
@@ -75,18 +75,6 @@ ALTER TABLE ordenesdecompra
 ALTER TABLE ordenesdecompra
     ADD CONSTRAINT ordendecompra_sucursal_fk FOREIGN KEY (sucursal_nombre) REFERENCES sucursales (nombre);
 
--- Tablas Viejas --
-
-
-CREATE TABLE inventarioproductos (
-    costopromedio FLOAT(10) NOT NULL,
-    cantidad INTEGER NOT NULL,
-    capacidad INTEGER NOT NULL,
-    nivelminimoreorden INTEGER NOT NULL,
-    producto_codigodebarras VARCHAR(10) NOT NULL,
-    bodega_nombre VARCHAR2(30) NOT NULL,
-    PRIMARY KEY (bodega_nombre, producto_codigodebarras)
-);
 
 CREATE TABLE items (
     cantidad INTEGER NOT NULL,
@@ -95,6 +83,26 @@ CREATE TABLE items (
     producto_codigodebarras VARCHAR(10) NOT NULL,
     PRIMARY KEY (ordendecompra_codigo, producto_codigodebarras)
 );
+
+
+-- Tablas Viejas --
+CREATE TABLE inventariodeproductos (
+    costo_promedio FLOAT(10) NOT NULL,
+    cantidad INTEGER NOT NULL,
+    capacidad INTEGER NOT NULL,
+    nivelminimoreorden INTEGER NOT NULL,
+    producto_codigodebarras VARCHAR(10) NOT NULL,
+    bodega_nombre VARCHAR2(30) NOT NULL,
+    PRIMARY KEY (bodega_nombre, producto_codigodebarras)
+);
+
+ALTER TABLE inventarioproductos
+    ADD CONSTRAINT inventarioproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
+
+ALTER TABLE inventarioproductos
+    ADD CONSTRAINT inventarioproducto_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigodebarras);
+
+
 
 CREATE TABLE noperecederos (
     codigocategoria INTEGER NOT NULL,
@@ -132,17 +140,7 @@ CREATE TABLE ofrecen (
 );
 
 
-ALTER TABLE inventarioproductos
-    ADD CONSTRAINT inventarioproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
 
-ALTER TABLE inventarioproductos
-    ADD CONSTRAINT inventarioproducto_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigodebarras);
-
-ALTER TABLE items
-    ADD CONSTRAINT item_ordendecompra_fk FOREIGN KEY (ordendecompra_codigo) REFERENCES ordendecompras (codigo);
-
-ALTER TABLE items
-    ADD CONSTRAINT item_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigodebarras);
 
 ALTER TABLE noperecederos
     ADD CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria);

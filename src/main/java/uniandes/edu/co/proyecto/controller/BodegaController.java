@@ -28,7 +28,7 @@ public class BodegaController {
         }
     }
 
-    @DeleteMapping("/bodegas/bodega/{nombre}/delete")
+    @DeleteMapping("/bodegas/{nombre}/delete")
     public ResponseEntity<String> eliminarBodega(@PathVariable("nombre") String nombre) {
         try {
             bodegaRepository.deleteBodega(nombre);
@@ -63,8 +63,4 @@ public class BodegaController {
     //         return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
     //     }
     // }
-
-
 }
-
-
