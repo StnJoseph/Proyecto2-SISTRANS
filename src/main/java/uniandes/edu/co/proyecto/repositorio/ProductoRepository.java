@@ -45,4 +45,9 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
                         @Param("volumen") Double volumen, 
                         @Param("peso") Double peso,
                         @Param("categoria_codigo") Integer categoria_codigo);
+
+    //RFC 2
+    @Query(value = "SELECT * FROM productos p INNNER JOIN CATEGORIA c WHERE precio BETWEEN :precio_min AND :precio_max AND XS AND sucursal = :sucursal AND categoria = :categoria", nativeQuery = true)
+    Collection<Producto> findProductosCaracteristicas();
+    
 }
