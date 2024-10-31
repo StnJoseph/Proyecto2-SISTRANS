@@ -1,5 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,14 +13,14 @@ public class Categoria {
 
     //Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer codigo;
     private String nombre;
     private String descripcion;
     private String caracteristicas_almacenamiento;
 
     //Constructor
-    public Categoria(String nombre, String descripcion,String caracteristicas_almacenamiento) {
+    public Categoria(Integer codigo, String nombre, String descripcion, String caracteristicas_almacenamiento) {
+        this.codigo = codigo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.caracteristicas_almacenamiento = caracteristicas_almacenamiento;
@@ -41,10 +42,10 @@ public class Categoria {
         return descripcion;
     }
 
-    public String getCaracteristicasAlmacenamiento() {
+    public String getCaracteristicas_almacenamiento() {
         return caracteristicas_almacenamiento;
     }
-    
+
     //SETTERS
     public void setCodigo(Integer codigo) {
         this.codigo = codigo;
@@ -58,7 +59,7 @@ public class Categoria {
         this.descripcion = descripcion;
     }
 
-    public void setCaracteristicasAlmacenamiento(String caracteristicas_almacenamiento) {
+    public void setCaracteristicas_almacenamiento(String caracteristicas_almacenamiento) {
         this.caracteristicas_almacenamiento = caracteristicas_almacenamiento;
-    }
+    }  
 }

@@ -15,13 +15,13 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
     @Query(value = "SELECT * FROM productos", nativeQuery = true)
     Collection<Producto> findAllProductos();
 
-    @Query(value = "SELECT * FROM productos WHERE codigo_de_barras = :codigoDeBarras", nativeQuery = true)
-    Producto findProductoByCodigoDeBarras(@Param("codigoDeBarras") String codigoDeBarras);
+    @Query(value = "SELECT * FROM productos WHERE codigo_de_barras = :codigo_de_barras", nativeQuery = true)
+    Producto findProductoByCodigoDeBarras(@Param("codigo_de_barras") String codigo_de_barras);
 
     @Modifying
     @Transactional
-    @Query(value = "INSERT INTO productos (codigo_de_barras, nombre, costo_en_bodega, precio_unitario, presentacion, cantidad_presentacion, unidad_de_medida, volumen, peso, categoria_codigo) VALUES (:codigoDeBarras, :nombre, :costoEnBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadDeMedida, :volumen, :peso, :categoria_codigo)", nativeQuery = true)
-    void insertProducto(@Param("codigoDeBarras") String codigoDeBarras, 
+    @Query(value = "INSERT INTO productos (codigo_de_barras, nombre, costo_en_bodega, precio_unitario, presentacion, cantidad_presentacion, unidad_de_medida, volumen, peso, categoria_codigo) VALUES (:codigo_de_barras, :nombre, :costoEnBodega, :precioUnitario, :presentacion, :cantidadPresentacion, :unidadDeMedida, :volumen, :peso, :categoria_codigo)", nativeQuery = true)
+    void insertProducto(@Param("codigo_de_barras") String codigo_de_barras, 
                         @Param("nombre") String nombre, 
                         @Param("costoEnBodega") Double costoEnBodega, 
                         @Param("precioUnitario") Double precioUnitario, 
@@ -34,8 +34,8 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
 
     @Modifying
     @Transactional
-    @Query(value = "UPDATE productos SET nombre = :nombre, costo_en_bodega = :costoEnBodega, precio_unitario = :precioUnitario, presentacion = :presentacion, cantidad_presentacion = :cantidadPresentacion, unidad_de_medida = :unidadDeMedida, volumen = :volumen, peso = :peso, categoria_codigo = :categoria_codigo WHERE codigo_de_barras = :codigoDeBarras", nativeQuery = true)
-    void updateProducto(@Param("codigoDeBarras") String codigoDeBarras, 
+    @Query(value = "UPDATE productos SET nombre = :nombre, costo_en_bodega = :costoEnBodega, precio_unitario = :precioUnitario, presentacion = :presentacion, cantidad_presentacion = :cantidadPresentacion, unidad_de_medida = :unidadDeMedida, volumen = :volumen, peso = :peso, categoria_codigo = :categoria_codigo WHERE codigo_de_barras = :codigo_de_barras", nativeQuery = true)
+    void updateProducto(@Param("codigo_de_barras") String codigo_de_barras, 
                         @Param("nombre") String nombre, 
                         @Param("costoEnBodega") Double costoEnBodega, 
                         @Param("precioUnitario") Double precioUnitario, 
