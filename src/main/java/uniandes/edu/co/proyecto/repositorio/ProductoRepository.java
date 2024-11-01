@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,7 +17,10 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
     Collection<Producto> findAllProductos();
 
     @Query(value = "SELECT * FROM productos WHERE codigo_de_barras = :codigo_de_barras", nativeQuery = true)
-    Producto findProductoByCodigoDeBarras(@Param("codigo_de_barras") String codigo_de_barras);
+    Optional<Producto> findProductoByCodigoDeBarras(@Param("codigo_de_barras") String codigo_de_barras);
+
+    @Query(value = "SELECT * FROM productos WHERE nombre = :nombre", nativeQuery = true)
+    Optional<Producto> findProductoByNombre(@Param("nombre") String nombre);
 
     @Modifying
     @Transactional

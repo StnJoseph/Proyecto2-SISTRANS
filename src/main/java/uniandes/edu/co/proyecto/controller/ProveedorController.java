@@ -30,8 +30,15 @@ public class ProveedorController {
     @PostMapping("/proveedores/{nit}/edit/save")
     public ResponseEntity<String> actualizarBodega(@PathVariable("nit") Integer nit, @RequestBody Proveedor proveedor) {
         try {
-            proveedorRepository.updateProveedor(nit, proveedor.getNombre(), proveedor.getDireccion(), proveedor.getNombre_contacto(), proveedor.getTelefono_contacto());
-            return ResponseEntity.ok("Proveedor actualizado exitosamente");
+            Proveedor existeProvedor = proveedorRepository.findById(nit).orElse(null);
+
+            if (existeProvedor == null) {
+                    return new ResponseEntity<>("Proveedor no encontrado", HttpStatus.NOT_FOUND);
+            }
+            else {
+                proveedorRepository.updateProveedor(nit, proveedor.getNombre(), proveedor.getDireccion(), proveedor.getNombre_contacto(), proveedor.getTelefono_contacto());
+                return ResponseEntity.ok("Proveedor actualizado exitosamente");                    
+            }
         } catch (Exception e) {
             return new ResponseEntity<>("Error al editar el proveedor", HttpStatus.INTERNAL_SERVER_ERROR);
         }
