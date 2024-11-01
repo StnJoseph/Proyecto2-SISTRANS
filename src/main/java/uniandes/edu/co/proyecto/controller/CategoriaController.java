@@ -29,7 +29,7 @@ public class CategoriaController {
         }
     }
 
-    @GetMapping("/categorias/{codigo}")
+    @GetMapping("/categorias/codigo/{codigo}")
     public ResponseEntity<?> darCategoriaPorCodigo(@PathVariable int codigo) {
         try {
             Optional<Categoria> categoria = categoriaRepository.findCategoriaById(codigo);
@@ -40,7 +40,7 @@ public class CategoriaController {
         }
     }
 
-    @GetMapping("/categorias/{nombre}")
+    @GetMapping("/categorias/nombre/{nombre}")
     public ResponseEntity<?> darCategoriaPorNombre(@PathVariable String nombre) {
         try {
             Optional<Categoria> categoria = categoriaRepository.findCategoriaByNombre(nombre);

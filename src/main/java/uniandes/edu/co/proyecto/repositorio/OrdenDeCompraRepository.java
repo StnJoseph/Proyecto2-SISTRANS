@@ -2,6 +2,7 @@ package uniandes.edu.co.proyecto.repositorio;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -16,11 +17,11 @@ public interface OrdenDeCompraRepository extends JpaRepository<OrdenDeCompra, In
     @Query(value = "SELECT * FROM ordenesdecompra", nativeQuery = true)
     Collection<OrdenDeCompra> findAllOrdenesCompra();
 
-    // @Query(value = "SELECT * FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
-    // OrdenDeCompra findOrdenCompraByCodigo(@Param("codigo") int codigo);
+    @Query(value = "SELECT * FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
+    Optional<OrdenDeCompra> findOrdenCompraByCodigo(@Param("codigo") int codigo);
 
     // @Query(value = "SELECT estado FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
-    // void findEstadoByCodigo(@Param("codigo") int codigo);
+    // Optional<OrdenDeCompra> findEstadoByCodigo(@Param("codigo") int codigo);
 
     @Modifying
     @Transactional
@@ -33,4 +34,3 @@ public interface OrdenDeCompraRepository extends JpaRepository<OrdenDeCompra, In
     void updateEstadoOrdenCompra(@Param("codigo") int codigo);
 
 }
-
