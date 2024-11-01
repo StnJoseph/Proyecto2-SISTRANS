@@ -47,7 +47,10 @@ public interface ProductoRepository extends JpaRepository<Producto, String> {
                         @Param("categoria_codigo") Integer categoria_codigo);
 
     //RFC 2
-    @Query(value = "SELECT * FROM productos p INNNER JOIN CATEGORIA c WHERE precio BETWEEN :precio_min AND :precio_max AND XS AND sucursal = :sucursal AND categoria = :categoria", nativeQuery = true)
-    Collection<Producto> findProductosCaracteristicas();
+    @Query(value = "SELECT * FROM productos p INNER JOIN categorias c ON p.categoria_codigo=c.codigo INNER JOIN inventarioproductos i ON p.codigo_de_barras=i.producto_codigodebarras INNER JOIN bodegas b ON b.nombre = i.bodega_nombre INNER JOIN sucursales s ON s.nombre = b.nombre INNER JOIN perecederos pc ON pc.codigocategoria=p.categoria_codigo WHERE p.precio_unitario BETWEEN :precio_min AND :precio_max AND pc.fechaexpiracion < :fecha AND p.categoria_codigo = :categoria AND s.nombre = :sucusal;", nativeQuery = true)
+    Collection<Producto> findProductosCaracteristicasInferior();
+
+    @Query(value = "SELECT * FROM productos p INNER JOIN categorias c ON p.categoria_codigo=c.codigo INNER JOIN inventarioproductos i ON p.codigo_de_barras=i.producto_codigodebarras INNER JOIN bodegas b ON b.nombre = i.bodega_nombre INNER JOIN sucursales s ON s.nombre = b.nombre INNER JOIN perecederos pc ON pc.codigocategoria=p.categoria_codigo WHERE p.precio_unitario BETWEEN :precio_min AND :precio_max AND pc.fechaexpiracion > :fecha AND p.categoria_codigo = :categoria AND s.nombre = :sucursal;", nativeQuery = true)
+    Collection<Producto> findProductosCaracteristicasPosterior();
     
 }
