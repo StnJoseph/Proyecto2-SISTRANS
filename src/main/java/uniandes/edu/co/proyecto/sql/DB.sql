@@ -86,34 +86,6 @@ CREATE TABLE items (
 );
 
 
--- Tablas Viejas --
-CREATE TABLE inventariodeproductos (
-    costo_promedio FLOAT(10) NOT NULL,
-    cantidad INTEGER NOT NULL,
-    capacidad INTEGER NOT NULL,
-    nivelminimoreorden INTEGER NOT NULL,
-    producto_codigodebarras VARCHAR(10) NOT NULL,
-    bodega_nombre VARCHAR2(30) NOT NULL,
-    PRIMARY KEY (bodega_nombre, producto_codigodebarras)
-);
-
-ALTER TABLE inventarioproductos
-    ADD CONSTRAINT inventarioproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
-
-ALTER TABLE inventarioproductos
-    ADD CONSTRAINT inventarioproducto_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigodebarras);
-
-CREATE TABLE noperecederos (
-    codigocategoria INTEGER NOT NULL,
-    PRIMARY KEY (codigocategoria)
-);
-
-CREATE TABLE perecederos (
-    codigocategoria INTEGER NOT NULL,
-    fechaexpiracion DATE NOT NULL,
-    PRIMARY KEY (codigocategoria)
-);
-
 CREATE TABLE recepciondeproductos (
     idrecepcion INTEGER NOT NULL,
     bodega_nombre VARCHAR(30) NOT NULL,
@@ -121,27 +93,44 @@ CREATE TABLE recepciondeproductos (
     PRIMARY KEY (idrecepcion)
 );
 
-CREATE TABLE ofrecen (
-    proveedor_nit VARCHAR(9) NOT NULL,
+
+-- Tablas que modifico samuel por si tienen algun error jsjsjs --
+
+CREATE TABLE inventariodeproductos (
+    costo_promedio FLOAT(10) NOT NULL,
+    cantidad INTEGER NOT NULL,
+    capacidad INTEGER NOT NULL,
+    nivelminimoreorden INTEGER NOT NULL,
     producto_codigodebarras VARCHAR(10) NOT NULL,
-    PRIMARY KEY (proveedor_nit, producto_codigodebarras)
+    bodega_nombre VARCHAR2(30) NOT NULL,
+    PRIMARY KEY (bodega_nombre, producto_codigodebarras),
+    CONSTRAINT inventarioproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombre),
+    CONSTRAINT inventarioproducto_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
 );
 
 
-ALTER TABLE noperecederos
-    ADD CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria);
 
-ALTER TABLE perecederos
-    ADD CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria);
+-- Tablas Viejas --
 
-ALTER TABLE recepciondeproductos
-    ADD CONSTRAINT recepciondeproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
 
-ALTER TABLE recepciondeproductos
-    ADD CONSTRAINT recepciondeproducto_ordendecompra_fk FOREIGN KEY (ordendecompra_codigo) REFERENCES ordendecompras (codigo);
 
-ALTER TABLE ofrecen
-    ADD CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit);
+CREATE TABLE noperecederos (
+    codigocategoria INTEGER NOT NULL,
+    PRIMARY KEY (codigocategoria),
+    CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria)
+);
 
-ALTER TABLE ofrecen
-    ADD CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigodebarras);
+CREATE TABLE perecederos (
+    codigocategoria INTEGER NOT NULL,
+    fechaexpiracion DATE NOT NULL,
+    PRIMARY KEY (codigocategoria),
+    CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria)
+);
+
+CREATE TABLE ofrecen (
+    proveedor_nit VARCHAR(9) NOT NULL,
+    producto_codigodebarras VARCHAR(10) NOT NULL,
+    PRIMARY KEY (proveedor_nit, producto_codigodebarras),
+    CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
+    CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
+);
