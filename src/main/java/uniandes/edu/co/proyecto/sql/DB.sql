@@ -27,7 +27,6 @@ CREATE TABLE bodegas (
 ALTER TABLE bodegas
     ADD CONSTRAINT bodega_sucursal_fk FOREIGN KEY (nombre_sucursal) REFERENCES sucursales (nombre);
 
-
 CREATE TABLE proveedores (
     nit INTEGER NOT NULL,
     nombre VARCHAR(30) NOT NULL,
@@ -58,6 +57,10 @@ CREATE TABLE productos (
     categoria_codigo INTEGER NOT NULL,
     PRIMARY KEY (codigo_de_barras)
 );
+
+ALTER TABLE productos
+    ADD CONSTRAINT producto_categoria_fk FOREIGN KEY (categoria_codigo) REFERENCES categorias (codigo);
+
 
 CREATE TABLE ordenesdecompra (
     codigo INTEGER NOT NULL,
@@ -154,8 +157,6 @@ ALTER TABLE ordendecompras
 ALTER TABLE perecederos
     ADD CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria);
 
-ALTER TABLE productos
-    ADD CONSTRAINT producto_categoria_fk FOREIGN KEY (categoria_codigo) REFERENCES categorias (codigocategoria);
 
 ALTER TABLE recepciondeproductos
     ADD CONSTRAINT recepciondeproducto_bodega_fk FOREIGN KEY (bodega_nombre) REFERENCES bodegas (nombrebodega);
