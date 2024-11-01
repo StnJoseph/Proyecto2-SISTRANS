@@ -1,9 +1,6 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,15 +12,13 @@ public class Producto {
 
     //Atributos
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    
     private String codigo_de_barras;
     private String nombre;
-    private Double costoEnBodega;
-    private Double precioUnitario;
+    private Double costo_en_bodega;
+    private Double precio_unitario;
     private String presentacion;
-    private Integer cantidadPresentacion;
-    private String unidadDeMedida;
+    private Integer cantidad_presentacion;
+    private String unidad_de_medida;
     private Double volumen;
     private Double peso;
 
@@ -32,16 +27,16 @@ public class Producto {
     private Categoria categoria_codigo;
 
     //Constructor
-    public Producto(String codigo_de_barras, String nombre, Double costoEnBodega, Double precioUnitario, String presentacion, Integer cantidadPresentacion, String unidadDeMedida, Double peso, Double volumen, Categoria categoria_codigo) {
+    public Producto(String codigo_de_barras, String nombre, Double costo_en_bodega, Double precio_unitario, String presentacion, Integer cantidad_presentacion, String unidad_de_medida, Double peso, Double volumen, Categoria categoria_codigo) {
         this.codigo_de_barras = codigo_de_barras;
         this.nombre = nombre;
-        this.costoEnBodega = costoEnBodega;
-        this.precioUnitario = precioUnitario;
+        this.costo_en_bodega = costo_en_bodega;
+        this.precio_unitario = precio_unitario;
         this.presentacion = presentacion;
-        this.cantidadPresentacion = cantidadPresentacion;
-        this.unidadDeMedida = unidadDeMedida;
-        this.peso = peso;
+        this.cantidad_presentacion = cantidad_presentacion;
+        this.unidad_de_medida = unidad_de_medida;
         this.volumen = volumen;
+        this.peso = peso;
         this.categoria_codigo = categoria_codigo;
     }
 
@@ -58,11 +53,11 @@ public class Producto {
     }
 
     public Double getCostoEnBodega() {
-        return costoEnBodega;
+        return costo_en_bodega;
     }
 
     public Double getPrecioUnitario() {
-        return precioUnitario;
+        return precio_unitario;
     }
 
     public String getPresentacion() {
@@ -70,11 +65,11 @@ public class Producto {
     }
 
     public Integer getCantidadPresentacion() {
-        return cantidadPresentacion;
+        return cantidad_presentacion;
     }
 
     public String getUnidadDeMedida() {
-        return unidadDeMedida;
+        return unidad_de_medida;
     }
 
     public Double getVolumen() {
@@ -98,24 +93,24 @@ public class Producto {
         this.nombre = nombre;
     }
 
-    public void setCostoEnBodega(Double costoEnBodega) {
-        this.costoEnBodega = costoEnBodega;
+    public void setCostoEnBodega(Double costo_en_bodega) {
+        this.costo_en_bodega = costo_en_bodega;
     }
 
-    public void setPrecioUnitario(Double precioUnitario) {
-        this.precioUnitario = precioUnitario;
+    public void setPrecioUnitario(Double precio_unitario) {
+        this.precio_unitario = precio_unitario;
     }
 
     public void setPresentacion(String presentacion) {
         this.presentacion = presentacion;
     }
 
-    public void setCantidadPresentacion(Integer cantidadPresentacion) {
-        this.cantidadPresentacion = cantidadPresentacion;
+    public void setCantidadPresentacion(Integer cantidad_presentacion) {
+        this.cantidad_presentacion = cantidad_presentacion;
     }
 
-    public void setUnidadDeMedida(String unidadDeMedida) {
-        this.unidadDeMedida = unidadDeMedida;
+    public void setUnidadDeMedida(String unidad_de_medida) {
+        this.unidad_de_medida = unidad_de_medida;
     }
 
     public void setVolumen(Double volumen) {
