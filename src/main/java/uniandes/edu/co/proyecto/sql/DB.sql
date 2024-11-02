@@ -128,13 +128,3 @@ CREATE TABLE ofrecen (
     CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
     CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
 );
-
-
-
-
--- Tablas Viejas --
-
-
-
-
-
