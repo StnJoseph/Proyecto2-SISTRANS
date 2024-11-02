@@ -41,28 +41,29 @@ public class OrdenCompraController {
         }
     } 
     
-    // @PostMapping("/ordenes/{numero}/anular")
-    // public ResponseEntity<?> anularOrdenCompra(@PathVariable("numero") Integer numero) {
-    //     try {
-    //         EstadoCompra estadoActual = ordenCompraRepository.findEstadoByCodigo(numero);
-    //         if (EstadoCompra.ENTREGADA.equals(estadoActual)) {
-    //             return new ResponseEntity<>("La orden de compra ya ha sido entregada y no puede ser anulada", HttpStatus.BAD_REQUEST);
-    //         }
-            
-    //         ordenCompraRepository.updateEstadoOrdenCompra(numero);
-    //         return ResponseEntity.ok("Orden de compra anulada exitosamente");
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<>("Error al anular la orden de compra", HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-    // }
+    @PostMapping("/ordenesdecompra/{codigo}/anular")
+    public ResponseEntity<?> anularOrdenCompra(@PathVariable("codigo") Integer numero) {
+        try {
+            String estadoActual = ordenDeCompraRepository.findEstadoByCodigo(numero);
+            if (estadoActual == "ANULADA") {
+                return new ResponseEntity<>("La orden de compra ya ha sido entregada y no puede ser anulada", HttpStatus.BAD_REQUEST);
+            }
+            else {
+                ordenDeCompraRepository.updateEstadoOrdenCompra(numero);
+            }
+            return ResponseEntity.ok("Orden de compra anulada exitosamente");
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error al anular la orden de compra", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
-    // @GetMapping("/ordenes")
-    // public ResponseEntity<Collection<OrdenDeCompra>> ordenesDeCompra() {
-    //     try {
-    //         Collection<OrdenDeCompra> ordenDeCompra = ordenCompraRepository.findAllOrdenesCompra();
-    //         return ResponseEntity.ok(ordenDeCompra);
-    //     } catch (Exception e) {
-    //         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    //     }
-    // }
+    @GetMapping("/ordenesdecompra")
+    public ResponseEntity<Collection<OrdenDeCompra>> ordenesDeCompra() {
+        try {
+            Collection<OrdenDeCompra> ordenDeCompra = ordenDeCompraRepository.findAllOrdenesCompra();
+            return ResponseEntity.ok(ordenDeCompra);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }
