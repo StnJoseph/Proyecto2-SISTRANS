@@ -20,8 +20,8 @@ public interface OrdenDeCompraRepository extends JpaRepository<OrdenDeCompra, In
     @Query(value = "SELECT * FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
     Optional<OrdenDeCompra> findOrdenCompraByCodigo(@Param("codigo") int codigo);
 
-    // @Query(value = "SELECT estado FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
-    // Optional<OrdenDeCompra> findEstadoByCodigo(@Param("codigo") int codigo);
+    @Query(value = "SELECT estado FROM ordenesdecompra WHERE codigo = :codigo", nativeQuery = true)
+    String findEstadoByCodigo(@Param("codigo") int codigo);
 
     @Modifying
     @Transactional
