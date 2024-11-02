@@ -8,11 +8,9 @@ import jakarta.persistence.Table;
 @Table(name = "ofrecen")
 public class Ofrecen {
 
-    
     @EmbeddedId
     private OfrecenPK pk;
     
-
     public Ofrecen() {
     }
 

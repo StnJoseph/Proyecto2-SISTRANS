@@ -9,9 +9,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
 import uniandes.edu.co.proyecto.modelo.RecepcionDeProducto;
-import uniandes.edu.co.proyecto.modelo.RecepcionDeProductoPK;
 
-public interface RecepcionDeProductoRepository extends JpaRepository<RecepcionDeProducto, RecepcionDeProductoPK> {
+public interface RecepcionDeProductoRepository extends JpaRepository<RecepcionDeProducto, Integer> {
 
     @Query(value = "SELECT * FROM recepcion_de_producto", nativeQuery = true)
     Collection<RecepcionDeProducto> findAllRecepciones();

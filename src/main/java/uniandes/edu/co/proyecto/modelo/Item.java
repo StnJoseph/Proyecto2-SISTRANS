@@ -15,8 +15,8 @@ public class Item {
     private Integer precio;
 
     // Constructor
-    public Item(OrdenDeCompra ordendecompra_codigo, Producto produto_codigodebarras, Integer cantidad, Integer precio) {
-        this.pk = new ItemPK(ordendecompra_codigo, produto_codigodebarras);
+    public Item(OrdenDeCompra ordendecompra_codigo, Producto producto_codigodebarras, Integer cantidad, Integer precio) {
+        this.pk = new ItemPK(ordendecompra_codigo, producto_codigodebarras);
         this.cantidad = cantidad;
         this.precio = precio;
     }
@@ -50,5 +50,4 @@ public class Item {
     public void setPrecio(Integer precio) {
         this.precio = precio;
     }
-
 }

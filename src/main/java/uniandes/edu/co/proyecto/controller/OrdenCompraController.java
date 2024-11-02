@@ -58,7 +58,7 @@ public class OrdenCompraController {
     }
 
     @GetMapping("/ordenesdecompra")
-    public ResponseEntity<Collection<OrdenDeCompra>> ordenesDeCompra() {
+    public ResponseEntity<Collection<OrdenDeCompra>> darOrdenesDeCompra() {
         try {
             Collection<OrdenDeCompra> ordenDeCompra = ordenDeCompraRepository.findAllOrdenesCompra();
             return ResponseEntity.ok(ordenDeCompra);

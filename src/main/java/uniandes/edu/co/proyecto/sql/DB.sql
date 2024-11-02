@@ -12,7 +12,7 @@ DROP TABLE proveedores;
 DROP TABLE sucursales;
 DROP TABLE ciudades;
 
--- Tablas Nuevas --
+------------------ Tablas ------------------
 CREATE TABLE ciudades (
     codigo INTEGER NOT NULL,
     nombre VARCHAR(30) NOT NULL,
@@ -25,21 +25,17 @@ CREATE TABLE sucursales (
     direccion VARCHAR(40) NOT NULL,
     telefono INTEGER NOT NULL,
     codigo_ciudad INTEGER NOT NULL,
-    PRIMARY KEY (nombre)
+    PRIMARY KEY (nombre),
+    CONSTRAINT sucursal_ciudad_fk FOREIGN KEY (codigo_ciudad) REFERENCES ciudades (codigo)
 );
-
-ALTER TABLE sucursales
-    ADD CONSTRAINT sucursal_ciudad_fk FOREIGN KEY (codigo_ciudad) REFERENCES ciudades (codigo);
 
 CREATE TABLE bodegas (
     nombre VARCHAR(30) NOT NULL,
     tamanio INTEGER NOT NULL,
     nombre_sucursal VARCHAR(30) NOT NULL,
-    PRIMARY KEY (nombre)
+    PRIMARY KEY (nombre),
+    CONSTRAINT bodega_sucursal_fk FOREIGN KEY (nombre_sucursal) REFERENCES sucursales (nombre)
 );
-
-ALTER TABLE bodegas
-    ADD CONSTRAINT bodega_sucursal_fk FOREIGN KEY (nombre_sucursal) REFERENCES sucursales (nombre);
 
 CREATE TABLE proveedores (
     nit INTEGER NOT NULL,
@@ -69,11 +65,9 @@ CREATE TABLE productos (
     volumen NUMBER NOT NULL,
     peso NUMBER NOT NULL,
     categoria_codigo INTEGER NOT NULL,
-    PRIMARY KEY (codigo_de_barras)
+    PRIMARY KEY (codigo_de_barras),
+    CONSTRAINT producto_categoria_fk FOREIGN KEY (categoria_codigo) REFERENCES categorias (codigo)
 );
-
-ALTER TABLE productos
-    ADD CONSTRAINT producto_categoria_fk FOREIGN KEY (categoria_codigo) REFERENCES categorias (codigo);
 
 CREATE TABLE ordenesdecompra (
     codigo INTEGER NOT NULL,
@@ -82,21 +76,19 @@ CREATE TABLE ordenesdecompra (
     estado VARCHAR(20) NOT NULL,
     proveedor_nit INTEGER NOT NULL,
     sucursal_nombre  VARCHAR(20) NOT NULL,
-    PRIMARY KEY (codigo)
-);
-
-ALTER TABLE ordenesdecompra
-    ADD CONSTRAINT ordendecompra_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit);
-
-ALTER TABLE ordenesdecompra
-    ADD CONSTRAINT ordendecompra_sucursal_fk FOREIGN KEY (sucursal_nombre) REFERENCES sucursales (nombre);
+    PRIMARY KEY (codigo),
+    CONSTRAINT ordendecompra_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
+    CONSTRAINT ordendecompra_sucursal_fk FOREIGN KEY (sucursal_nombre) REFERENCES sucursales (nombre)
+); 
 
 CREATE TABLE items (
     cantidad INTEGER NOT NULL,
     precio INTEGER NOT NULL,
     ordendecompra_codigo INTEGER NOT NULL,
     producto_codigodebarras VARCHAR(10) NOT NULL,
-    PRIMARY KEY (ordendecompra_codigo, producto_codigodebarras)
+    PRIMARY KEY (ordendecompra_codigo, producto_codigodebarras),
+    CONSTRAINT item_ordendecompra_fk FOREIGN KEY (ordendecompra_codigo) REFERENCES ordenesdecompra(codigo),
+    CONSTRAINT item_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos(codigo_de_barras)
 );
 
 
@@ -104,7 +96,9 @@ CREATE TABLE recepciondeproductos (
     idrecepcion INTEGER NOT NULL,
     bodega_nombre VARCHAR(30) NOT NULL,
     ordendecompra_codigo INTEGER NOT NULL,
-    PRIMARY KEY (idrecepcion)
+    PRIMARY KEY (idrecepcion),
+    CONSTRAINT recepciondeproducto_bodega FOREIGN KEY (bodega_nombre) REFERENCES bodegas(nombre),
+    CONSTRAINT resepciondeproducto_ordendecompra FOREIGN KEY (ordendecompra_codigo) REFERENCES ordenesdecompra(codigo)
 );
 
 -- Tablas que modifico samuel por si tienen algun error jsjsjs --
