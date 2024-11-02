@@ -4,8 +4,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,7 +28,7 @@ public class ProductoController {
     }
 
     @PostMapping("/productos/{codigo_de_barras}/edit/save")
-    public ResponseEntity<?> productoEditarGuardar(@PathVariable("codigo_de_barras") String codigo_de_barras, @RequestBody Producto producto) {
+    public ResponseEntity<?> actualizarProducto(@PathVariable("codigo_de_barras") String codigo_de_barras, @RequestBody Producto producto) {
         try {
 
             Producto existingProducto = productoRepository.findById(codigo_de_barras).orElse(null);
