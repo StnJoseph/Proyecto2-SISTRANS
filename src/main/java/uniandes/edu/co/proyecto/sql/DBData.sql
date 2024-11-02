@@ -69,16 +69,19 @@ VALUES (10, 1200, 1, '0000000001');
 INSERT INTO items (cantidad, precio, ordendecompra_codigo, producto_codigodebarras) 
 VALUES (5, 1800, 2, '0000000002');
 
+INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
+VALUES (1000, 50, 500, 10, '0000000001', 'Bodega X');
 
+INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
+VALUES (1500, 30, 300, 5, '0000000002', 'Bodega Y');
+
+INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
+VALUES (2000, 20, 200, 8, '0000000003', 'Bodega Z');
 
 
 -- Datos Viejos --
 
-INSERT INTO inventarioproductos (costopromedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
-VALUES (1100.0, 100, 200, 20, '0000000001', 'Bodega Central');
 
-INSERT INTO inventarioproductos (costopromedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
-VALUES (1600.0, 50, 100, 10, '0000000002', 'Bodega Norte');
 
 INSERT INTO perecederos (codigocategoria, fechaexpiracion) 
 VALUES (1, TO_DATE('2024-12-31', 'YYYY-MM-DD'));
