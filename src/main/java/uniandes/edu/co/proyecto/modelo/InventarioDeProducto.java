@@ -11,19 +11,19 @@ public class InventarioDeProducto {
     // Atributos
     @EmbeddedId
     private InventarioDeProductoPK pk;
-    private Integer costoPromedio;
+    private Integer costo_promedio;
     private Integer cantidad;
     private Integer capacidad;
-    private Integer nivelMinimoReorden;
+    private Integer nivelminimoreorden;
 
     // Constructor
     public InventarioDeProducto(Bodega nombre_bodega, Producto codigoDeBarras_producto, Integer costoPromedio,
             Integer cantidad, Integer capacidad, Integer nivelMinimoReorden) {
         this.pk = new InventarioDeProductoPK(nombre_bodega, codigoDeBarras_producto);
-        this.costoPromedio = costoPromedio;
+        this.costo_promedio = costoPromedio;
         this.cantidad = cantidad;
         this.capacidad = capacidad;
-        this.nivelMinimoReorden = nivelMinimoReorden;
+        this.nivelminimoreorden = nivelMinimoReorden;
     }
 
     // Constructor vacio
@@ -37,7 +37,7 @@ public class InventarioDeProducto {
     }
 
     public Integer getCostoPromedio() {
-        return costoPromedio;
+        return costo_promedio;
     }
 
     public Integer getCantidad() {
@@ -49,7 +49,7 @@ public class InventarioDeProducto {
     }
 
     public Integer getNivelMinimoReorden() {
-        return nivelMinimoReorden;
+        return nivelminimoreorden;
     }
 
     // SETTERS
@@ -58,7 +58,7 @@ public class InventarioDeProducto {
     }
 
     public void setCostoPromedio(Integer costoPromedio) {
-        this.costoPromedio = costoPromedio;
+        this.costo_promedio = costoPromedio;
     }
 
     public void setCantidad(Integer cantidad) {
@@ -70,6 +70,6 @@ public class InventarioDeProducto {
     }
 
     public void setNivelMinimoReorden(Integer nivelMinimoReorden) {
-        this.nivelMinimoReorden = nivelMinimoReorden;
+        this.nivelminimoreorden = nivelMinimoReorden;
     }
 }

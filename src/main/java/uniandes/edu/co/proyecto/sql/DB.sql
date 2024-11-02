@@ -108,23 +108,17 @@ CREATE TABLE inventariodeproductos (
     CONSTRAINT inventarioproducto_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
 );
 
-
-
--- Tablas Viejas --
-
-
-
 CREATE TABLE noperecederos (
     codigocategoria INTEGER NOT NULL,
     PRIMARY KEY (codigocategoria),
-    CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria)
+    CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigo)
 );
 
 CREATE TABLE perecederos (
     codigocategoria INTEGER NOT NULL,
     fechaexpiracion DATE NOT NULL,
     PRIMARY KEY (codigocategoria),
-    CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigocategoria)
+    CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigo)
 );
 
 CREATE TABLE ofrecen (
@@ -134,3 +128,13 @@ CREATE TABLE ofrecen (
     CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
     CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
 );
+
+
+
+
+-- Tablas Viejas --
+
+
+
+
+
