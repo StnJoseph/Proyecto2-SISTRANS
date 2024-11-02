@@ -96,6 +96,22 @@ CREATE TABLE recepciondeproductos (
 
 -- Tablas que modifico samuel por si tienen algun error jsjsjs --
 
+CREATE TABLE perecederos (
+    codigocategoria INTEGER NOT NULL,
+    fechaexpiracion DATE NOT NULL,
+    PRIMARY KEY (codigocategoria),
+    CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigo)
+);
+
+
+CREATE TABLE ofrecen (
+    proveedor_nit INTEGER NOT NULL,
+    producto_codigodebarras VARCHAR(10) NOT NULL,
+    PRIMARY KEY (proveedor_nit, producto_codigodebarras),
+    CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
+    CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
+);
+
 CREATE TABLE inventariodeproductos (
     costo_promedio FLOAT(10) NOT NULL,
     cantidad INTEGER NOT NULL,
@@ -113,22 +129,6 @@ CREATE TABLE noperecederos (
     PRIMARY KEY (codigocategoria),
     CONSTRAINT noperecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigo)
 );
-
-CREATE TABLE perecederos (
-    codigocategoria INTEGER NOT NULL,
-    fechaexpiracion DATE NOT NULL,
-    PRIMARY KEY (codigocategoria),
-    CONSTRAINT perecederos_categoria_fk FOREIGN KEY (codigocategoria) REFERENCES categorias (codigo)
-);
-
-CREATE TABLE ofrecen (
-    proveedor_nit VARCHAR(9) NOT NULL,
-    producto_codigodebarras VARCHAR(10) NOT NULL,
-    PRIMARY KEY (proveedor_nit, producto_codigodebarras),
-    CONSTRAINT sucursal_proveedor_fk FOREIGN KEY (proveedor_nit) REFERENCES proveedores (nit),
-    CONSTRAINT sucursal_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos (codigo_de_barras)
-);
-
 
 
 
