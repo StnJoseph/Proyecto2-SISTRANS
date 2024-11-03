@@ -150,3 +150,39 @@ INSERT INTO perecederos (codigocategoria, fechaexpiracion) VALUES (2, TO_DATE('2
 -- Ofrecen
 INSERT INTO ofrecen (proveedor_nit, producto_codigodebarras) VALUES (900100200, '001');
 INSERT INTO ofrecen (proveedor_nit, producto_codigodebarras) VALUES (900300400, '002');
+
+
+
+
+--datos samuel --- 
+
+
+INSERT INTO ordenesdecompra (codigo, fecha_creacion, fecha_entrega, estado, proveedor_nit, sucursal_nombre) 
+VALUES (3, TO_DATE('2024-10-15', 'YYYY-MM-DD'), TO_DATE('2024-10-20', 'YYYY-MM-DD'), 'Entregado', 900100200, 'Sucursal Norte');
+
+INSERT INTO ordenesdecompra (codigo, fecha_creacion, fecha_entrega, estado, proveedor_nit, sucursal_nombre) 
+VALUES (4, TO_DATE('2024-10-18', 'YYYY-MM-DD'), TO_DATE('2024-10-25', 'YYYY-MM-DD'), 'Pendiente', 900300400, 'Sucursal Sur');
+
+
+INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
+VALUES (3000, 40, 500, 15, '001', 'Bodega Central');
+
+INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
+VALUES (5500, 60, 300, 10, '002', 'Bodega Sur');
+
+
+INSERT INTO proveedores (nit, nombre, direccion, nombre_contacto, telefono_contacto) 
+VALUES (900500600, 'Proveedor C', 'Avenida 50 #70-10', 'Luis Martinez', 315123456);
+
+
+INSERT INTO sucursales (nombre, tamanio, direccion, telefono, codigo_ciudad) 
+VALUES ('Sucursal Este', 4000, 'Calle 50 #10-25', 321654987, 2);
+
+INSERT INTO bodegas (nombre, tamanio, nombre_sucursal) 
+VALUES ('Bodega Este', 2000, 'Sucursal Este');
+
+INSERT INTO ordenesdecompra (codigo, fecha_creacion, fecha_entrega, estado, proveedor_nit, sucursal_nombre) 
+VALUES (5, TO_DATE('2024-10-05', 'YYYY-MM-DD'), TO_DATE('2024-10-15', 'YYYY-MM-DD'), 'Entregado', 900500600, 'Sucursal Este');
+
+INSERT INTO recepciondeproductos (idrecepcion, bodega_nombre, ordendecompra_codigo) 
+VALUES (5, 'Bodega Este', 5);
