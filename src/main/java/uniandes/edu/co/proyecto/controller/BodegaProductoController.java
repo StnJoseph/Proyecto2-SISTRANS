@@ -1,59 +1,41 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import uniandes.edu.co.proyecto.repositorio.BodegaProductoRepository;
+import uniandes.edu.co.proyecto.service.BodegaProductoService;
 
 @RestController
 public class BodegaProductoController {
 
     @Autowired
-    private BodegaProductoRepository bodegaProductoRepository;
+    private BodegaProductoService bodegaProductoService;
 
     @GetMapping("/consulta_documentos_serializable")
-    @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
-    public List<BodegaProductoRepository.DocumentoIngreso> consultarDocumentosSerializable(
-        @RequestParam String nombreSucursal, 
-        @RequestParam String nombreBodega
-    ) {
+    public List<Map<String, Object>> consultarDocumentosSerializable(
+            @RequestParam String nombreSucursal, 
+            @RequestParam String nombreBodega) throws InterruptedException {
 
-        System.out.println("Sucursal: " + nombreSucursal);
-        System.out.println("Bodega: " + nombreBodega);
+        return bodegaProductoService.obtenerDocumentosIngreso(nombreSucursal, nombreBodega);
+    }
 
-        try {
-            
-            Thread.sleep(100);
+    @GetMapping("/consulta_documentos_read_committed")
+    public List<Map<String, Object>> consultarDocumentosReadCommitted(
+            @RequestParam String nombreSucursal, 
+            @RequestParam String nombreBodega) throws InterruptedException {
 
-            // Llama directamente al repository
-            List<BodegaProductoRepository.DocumentoIngreso> documentos = 
-                bodegaProductoRepository.findDocumentosIngresoBodega(nombreSucursal, nombreBodega);
-
-            if (documentos.isEmpty()) {
-                System.out.println("no funciona mi bro skill issue");
-            } else {
-                System.out.println("Documentos encontrados: " + documentos.size());
-            }
-
-            return documentos;
-
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            System.err.println("Consulta interrumpida: " + e.getMessage());
-            return List.of();
-
-        } catch (Exception e) {
-            System.err.println("Error en consulta SERIALIZABLE: " + e.getMessage());
-            return List.of();
-        }
+        return bodegaProductoService.obtenerDocumentosIngresoReadCommitted(nombreSucursal, nombreBodega);
     }
 }
+
+
+
+
 
 
 
