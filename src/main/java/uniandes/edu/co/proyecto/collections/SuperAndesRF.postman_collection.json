@@ -1,0 +1,577 @@
+{
+	"info": {
+		"_postman_id": "944f9e54-1b1e-4abf-864f-3099f44067fd",
+		"name": "SuperAndesRF",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37892983"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/proyecto/ciudades/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\":7,\r\n    \"nombre\":\"Tunja\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/ciudades/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"ciudades",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/sucursales/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Sucursal F\",\r\n    \"tamanio\": 1000.0,\r\n    \"direccion\": \"Cra 26\",\r\n    \"telefono\": 423625,\r\n    \"ciudad\": {\r\n        \"codigo\": 6\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/sucursales/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"sucursales",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/bodegas/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Bodega U\",\r\n    \"tamanio\":9000.0,\r\n    \"nombre_sucursal\":{\r\n        \"nombre\": \"Sucursal F\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/bodegas/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"bodegas",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/bodegas/bodega/{nombre}/delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/bodegas/Bodega V/delete",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"bodegas",
+						"Bodega V",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/proveedores/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nit\":123456780,\r\n    \"nombre\":\"Proveedor Cinco\",\r\n    \"direccion\":\"Av Caracas\",\r\n    \"nombre_contacto\":\"Daniela\",\r\n    \"telefono_contacto\":308834565\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/proveedores/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"proveedores",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/proveedores/123456780/edit/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Proveedor Cuatro\",\r\n    \"direccion\":\"Av Sur\",\r\n    \"nombre_contacto\":\"May\",\r\n    \"telefono_contacto\":308834565\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/proveedores/123456780/edit/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"proveedores",
+						"123456780",
+						"edit",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/categorias/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\":5,\r\n    \"nombre\":\"No perecedero\",\r\n    \"descripcion\":\"Producto quimico\",\r\n    \"caracteristicas_almacenamiento\":\"Mantener cerrado en todo momento\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/categorias/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"categorias",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/categorias/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/categorias/codigo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"categorias",
+						"codigo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/categorias/No Perecederos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/categorias/No Perecederos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"categorias",
+						"No Perecederos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/producto/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigoDeBarras\":\"0000000002\",\r\n    \"nombre\": \"Producto B\",\r\n    \"costoEnBodega\": 9500.0,\r\n    \"precioUnitario\": 1200.0,\r\n    \"presentacion\": \"unidad\",\r\n    \"cantidadPresentacion\": 4,\r\n    \"unidadDeMedida\": \"ml\",\r\n    \"volumen\": 2.3,\r\n    \"peso\": 9.9,\r\n    \"categoria_codigo\": {\r\n        \"codigo\": 2\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/producto/0000000001",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/codigo/0000000001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"codigo",
+						"0000000001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/productos/nombre/Producto A",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/nombre/Producto A",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"nombre",
+						"Producto A"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/productos/0000000001/edit/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Producto A\",\r\n    \"costoEnBodega\": 9500.0,\r\n    \"precioUnitario\": 1200.0,\r\n    \"presentacion\": \"unidad\",\r\n    \"cantidadPresentacion\": 4,\r\n    \"unidadDeMedida\": \"ml\",\r\n    \"volumen\": 2.3,\r\n    \"peso\": 9.9,\r\n    \"categoria_codigo\": {\r\n        \"codigo\": 2\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/0000000001/edit/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"0000000001",
+						"edit",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/ordenesdecompra/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"codigo\": 3,\r\n    \"fechaEntrega\": \"2024-01-10T05:00:00.000+00:00\",\r\n    \"proveedor_nit\": {\r\n        \"nit\": 123456789\r\n    },\r\n    \"sucursal_nombre\": {\r\n        \"nombre\": \"Sucursal A\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/ordenesdecompra/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"ordenesdecompra",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/ordenesdecompra/1/anular",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/ordenesdecompra/2/anular",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"ordenesdecompra",
+						"2",
+						"anular"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/ordenesdecompra",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/ordenesdecompra",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"ordenesdecompra"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/items/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"pk\": {\r\n        \"ordendecompra_codigo\": {\r\n            \"codigo\": 3\r\n        },\r\n        \"producto_codigodebarras\": {\r\n            \"codigoDeBarras\": \"0000000003\"\r\n        }\r\n    },\r\n    \"cantidad\": 10,\r\n    \"precio\": 1200\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/items/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"items",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/items/new",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"pk\": {\r\n            \"producto_codigodebarras\": {\r\n                \"codigoDeBarras\": \"0000000002\"\r\n            }\r\n        },\r\n        \"cantidad\": 10,\r\n        \"precio\": 1200\r\n    },\r\n    {\r\n        \"pk\": {\r\n            \"producto_codigodebarras\": {\r\n                \"codigoDeBarras\": \"0000000003\"\r\n            }\r\n        },\r\n        \"cantidad\": 10,\r\n        \"precio\": 1200\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/items/1/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"items",
+						"1",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/recepciondeproductos/2/new/save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idrecepcion\": 4,\r\n    \"bodega_nombre\": {\r\n        \"nombre\": \"Bodega Z\"\r\n        }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/recepciondeproductos/4/new/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"recepciondeproductos",
+						"4",
+						"new",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/recepciondeproductos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/recepciondeproductos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"recepciondeproductos"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

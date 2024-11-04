@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "a3955079-27ef-436c-872a-df7adac184ea",
+		"name": "SuperAndesRFC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37892983"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/proyecto/productos/Sucursal Norte/Bodega Central",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/Sucursal Norte/Bodega Central",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"Sucursal Norte",
+						"Bodega Central"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/sucursales/001",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/sucursales/001",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"sucursales",
+						"001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/productos/reorden",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/reorden",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"reorden"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/productos/1/1500.0/2500.0/2024-02-02/Sucursal/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/proyecto/productos/0/1500.0/2500.0/2024-02-02/Sucursal/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"productos",
+						"0",
+						"1500.0",
+						"2500.0",
+						"2024-02-02",
+						"Sucursal",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
