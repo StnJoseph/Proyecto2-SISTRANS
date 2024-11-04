@@ -1,7 +1,11 @@
 {
 	"info": {
 		"_postman_id": "78445a48-97b7-48b0-8a69-4a4706548ddb",
+<<<<<<< HEAD
 		"name": "SuperAndesRTC",
+=======
+		"name": "entrega3 req 7,6",
+>>>>>>> f142168f30c2c8862090f9cdf1c552cc09b6d291
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "38222574"
 	},
