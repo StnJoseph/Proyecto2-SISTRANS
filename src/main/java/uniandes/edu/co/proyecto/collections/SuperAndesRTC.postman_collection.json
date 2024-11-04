@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "78445a48-97b7-48b0-8a69-4a4706548ddb",
+		"name": "SuperAndesRTC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38222574"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/proyecto/consulta_documentos_read_committed?nombreSucursal=Sucursal Norte&nombreBodega=Bodega Central",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/consulta_documentos_read_committed?nombreSucursal=Sucursal Norte&nombreBodega=Bodega Central",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"consulta_documentos_read_committed"
+					],
+					"query": [
+						{
+							"key": "nombreSucursal",
+							"value": "Sucursal Norte"
+						},
+						{
+							"key": "nombreBodega",
+							"value": "Bodega Central"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/consulta_documentos_serializable?nombreSucursal=Sucursal Norte&nombreBodega=Bodega Central",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/consulta_documentos_serializable?nombreSucursal=Sucursal Norte&nombreBodega=Bodega Central",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"consulta_documentos_serializable"
+					],
+					"query": [
+						{
+							"key": "nombreSucursal",
+							"value": "Sucursal Norte"
+						},
+						{
+							"key": "nombreBodega",
+							"value": "Bodega Central"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
