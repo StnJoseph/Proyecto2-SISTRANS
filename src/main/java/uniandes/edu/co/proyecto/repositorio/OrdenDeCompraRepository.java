@@ -1,8 +1,8 @@
 package uniandes.edu.co.proyecto.repositorio;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.Optional;
+import java.util.Collection;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -31,6 +31,10 @@ public interface OrdenDeCompraRepository extends JpaRepository<OrdenDeCompra, In
     @Modifying
     @Transactional
     @Query(value = "UPDATE ordenesdecompra SET estado = 'ANULADA' WHERE codigo = :codigo", nativeQuery = true)
-    void updateEstadoOrdenCompra(@Param("codigo") int codigo);
+    void updateEstadoOrdenCompraAnulada(@Param("codigo") int codigo);
 
+    @Modifying
+    @Transactional
+    @Query(value = "UPDATE ordenesdecompra SET estado = 'ENTREGADA' WHERE codigo = :codigo", nativeQuery = true)
+    void updateEstadoOrdenCompraEntregada(@Param("codigo") int codigo);
 }

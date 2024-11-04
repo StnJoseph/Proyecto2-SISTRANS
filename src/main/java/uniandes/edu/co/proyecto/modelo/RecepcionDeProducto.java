@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.modelo;
 
-import jakarta.persistence.EmbeddedId;
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -15,6 +16,7 @@ public class RecepcionDeProducto {
     // Atributos
     @Id
     private Integer idrecepcion;
+    private Date fecha_ingreso;
 
     @ManyToOne
     @JoinColumn(name = "bodega_nombre", referencedColumnName = "nombre")
@@ -26,8 +28,9 @@ public class RecepcionDeProducto {
 
 
     // Constructor
-    public RecepcionDeProducto(Integer idrecepcion, Bodega bodega_nombre, OrdenDeCompra ordendecompra_codigo) {
+    public RecepcionDeProducto(Integer idrecepcion, Date fecha_ingreso, Bodega bodega_nombre, OrdenDeCompra ordendecompra_codigo) {
         this.idrecepcion = idrecepcion;
+        this.fecha_ingreso = fecha_ingreso;
         this.bodega_nombre = bodega_nombre;
         this.ordendecompra_codigo = ordendecompra_codigo;
     }
@@ -38,6 +41,10 @@ public class RecepcionDeProducto {
     // GETTERS
     public Integer getIdrecepcion() {
         return idrecepcion;
+    }
+    
+    public Date getFecha_ingreso() {
+        return fecha_ingreso;
     }
 
     public Bodega getBodega_nombre() {
@@ -51,6 +58,10 @@ public class RecepcionDeProducto {
     // SETTERS
     public void setIdrecepcion(Integer idrecepcion) {
         this.idrecepcion = idrecepcion;
+    }
+
+    public void setFecha_ingreso(Date fecha_ingreso) {
+        this.fecha_ingreso = fecha_ingreso;
     }
 
     public void setBodega_nombre(Bodega bodega_nombre) {

@@ -78,6 +78,14 @@ VALUES (1500, 30, 300, 5, '0000000002', 'Bodega Y');
 INSERT INTO inventariodeproductos (costo_promedio, cantidad, capacidad, nivelminimoreorden, producto_codigodebarras, bodega_nombre) 
 VALUES (2000, 20, 200, 8, '0000000003', 'Bodega Z');
 
+INSERT INTO recepciondeproductos (idrecepcion, fecha_ingreso, bodega_nombre, ordendecompra_codigo) 
+VALUES (1, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 'Bodega X', 1);
+
+INSERT INTO recepciondeproductos (idrecepcion, fecha_ingreso, bodega_nombre, ordendecompra_codigo) 
+VALUES (2, TO_DATE('2024-11-03', 'YYYY-MM-DD'), 'Bodega Y', 2);
+
+INSERT INTO recepciondeproductos (idrecepcion, fecha_ingreso, bodega_nombre, ordendecompra_codigo) 
+VALUES (3, TO_DATE('2024-11-03', 'YYYY-MM-DD'), 'Bodega Z', 3);
 
 -- Datos Viejos --
 

@@ -91,9 +91,9 @@ CREATE TABLE items (
     CONSTRAINT item_producto_fk FOREIGN KEY (producto_codigodebarras) REFERENCES productos(codigo_de_barras)
 );
 
-
 CREATE TABLE recepciondeproductos (
     idrecepcion INTEGER NOT NULL,
+    fecha_ingreso DATE NOT NULL,
     bodega_nombre VARCHAR(30) NOT NULL,
     ordendecompra_codigo INTEGER NOT NULL,
     PRIMARY KEY (idrecepcion),

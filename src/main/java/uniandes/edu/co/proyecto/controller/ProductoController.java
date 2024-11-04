@@ -1,6 +1,7 @@
 package uniandes.edu.co.proyecto.controller;
 
 import java.util.Optional;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.ProductoRepository;
+import uniandes.edu.co.proyecto.repositorio.ProductoRepository.ProductoInventarioDeProductos;
+import uniandes.edu.co.proyecto.repositorio.ProductoRepository.ProductoReorden;
 
 @RestController
 public class ProductoController {
@@ -76,6 +79,45 @@ public class ProductoController {
         } catch (Exception e) {
             return new ResponseEntity<>("Error al leer el producto: " + e.getMessage(),
                     HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // RFC2
+    @GetMapping("/productos/{post}/{precio_min}/{precio_max}/{fecha}/{sucursal}/{categoria}")
+    public ResponseEntity<?> getProductosConCaracteristicas(@PathVariable("precio_max") float precio_max, @PathVariable("precio_min") float precio_min, @PathVariable("post") Integer post, @PathVariable("fecha") String fecha, @PathVariable("sucursal") String sucursal, @PathVariable("categoria") Integer categoria ){
+        try {
+            if (post == 1){
+                Optional<Collection<Producto>> productos = productoRepository.findProductosCaracteristicasInferior(precio_min, precio_max, fecha, categoria, sucursal);
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            }
+            else{
+                Optional<Collection<Producto>> productos = productoRepository.findProductosCaracteristicasPosterior(precio_min, precio_max, fecha, categoria, sucursal);
+                return new ResponseEntity<>(productos, HttpStatus.OK);
+            }
+            } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    // RFC3
+    @GetMapping("/productos/{idSucursal}/{idBodega}")
+    public ResponseEntity<?> getAllProductosSucursalBodega(@PathVariable("idSucursal") String nombreSucursal, @PathVariable("idBodega") String nombreBodega) {
+        try {
+            Optional<Collection<ProductoInventarioDeProductos>> productos = productoRepository.findAllProductosSucursalBodega(nombreSucursal, nombreBodega);
+            return new ResponseEntity<>(productos, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    
+    // RFC5
+    @GetMapping("/productos/reorden")
+    public ResponseEntity<?> darProductosReorden() {
+        try {
+            Optional<Collection<ProductoReorden>> productos = productoRepository.findProductosReorden();
+            return new ResponseEntity<>(productos, HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
