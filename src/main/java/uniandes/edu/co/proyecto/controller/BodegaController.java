@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import uniandes.edu.co.proyecto.modelo.Bodega;
+import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository;
 import uniandes.edu.co.proyecto.repositorio.BodegaRepository.IndiceOcupacionBodega;
 
@@ -44,12 +45,14 @@ public class BodegaController {
         }
     }
 
-    // RFC1
-    @GetMapping("/bodegas/ocupacion/{productos}")
-    public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion(@PathVariable("productos") List<String> productos) {
+    // RFC 1 - Obtener el índice de ocupación de cada bodega
+    @GetMapping("/bodegas/ocupacion")
+    public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion(@RequestBody List<Producto> productos) {
         try {
             Collection<IndiceOcupacionBodega> ocupaciones = new ArrayList<>();
-            for (String codigo : productos) {
+
+            for (Producto producto : productos) {
+                String codigo = producto.getCodigoDeBarras();
                 IndiceOcupacionBodega ocupacion = bodegaRepository.obtenerIndiceDeOcupacion(codigo);
                 ocupaciones.add(ocupacion);
             }
