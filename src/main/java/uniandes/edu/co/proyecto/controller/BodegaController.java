@@ -1,6 +1,8 @@
 package uniandes.edu.co.proyecto.controller;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -43,17 +45,20 @@ public class BodegaController {
     }
 
     // RFC 1 - Obtener el índice de ocupación de cada bodega
-    @GetMapping("/bodegas/ocupacion")
-    public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion() {
+    @GetMapping("/bodegas/ocupacion/{productos}")
+    public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion(@PathVariable("productos") List<String> productos) {
         try {
-            Collection<IndiceOcupacionBodega> ocupacion = bodegaRepository.obtenerIndiceDeOcupacion();
-            return new ResponseEntity<>(ocupacion, HttpStatus.OK);
+            Collection<IndiceOcupacionBodega> ocupaciones = new ArrayList<>();
+            for (String codigo : productos) {
+                IndiceOcupacionBodega ocupacion = bodegaRepository.obtenerIndiceDeOcupacion(codigo);
+                ocupaciones.add(ocupacion);
+            }
+            return new ResponseEntity<>(ocupaciones, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     
-
     //RFC 3 
     // @GetMapping("/bodegas")
     // public ResponseEntity<Collection<Bodega>> getBodegas(@RequestParam(required = false) Integer id) {

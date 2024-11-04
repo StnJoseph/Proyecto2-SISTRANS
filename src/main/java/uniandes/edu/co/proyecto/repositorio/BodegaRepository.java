@@ -42,17 +42,6 @@ public interface BodegaRepository extends JpaRepository<Bodega, String> {
     //void updateBodega(@Param("id") long id, @Param("nombre") String nombre, @Param("tamanio") Integer tamanio);
 
     //RFC 1 
-    @Query(value =  "SELECT b.nombre nombreBodega, " +
-                    "SUM(ip.cantidad * p.volumen) volumenOcupado, " +
-                    "b.tamanio capacidadBodega, " +
-                    "ROUND((SUM(ip.cantidad * p.volumen) / b.tamanio) * 100, 2) porcentajeOcupacion " +
-                    "FROM bodegas b " +
-                    "INNER JOIN inventariodeproductos ip ON b.nombre = ip.bodega_nombre " +
-                    "INNER JOIN productos p ON ip.producto_codigodebarras = p.codigo_de_barras " +
-                    "GROUP BY b.nombre, b.tamanio", nativeQuery = true)
-                    
-    Collection<IndiceOcupacionBodega> obtenerIndiceDeOcupacion();
-
-
-
+    @Query(value =  "SELECT b.nombre nombreBodega, SUM(ip.cantidad * p.volumen) volumenOcupado, b.tamanio capacidadBodega, ROUND((SUM(ip.cantidad * p.volumen) / b.tamanio) * 100, 2) porcentajeOcupacion FROM bodegas b INNER JOIN inventariodeproductos ip ON b.nombre = ip.bodega_nombre INNER JOIN productos p ON ip.producto_codigodebarras = p.codigo_de_barras WHERE p.codigo_de_barras = :codigo_de_barras GROUP BY b.nombre, b.tamanio", nativeQuery = true)         
+    IndiceOcupacionBodega obtenerIndiceDeOcupacion(@Param("codigo_de_barras") String codigo_de_barras);
 }
