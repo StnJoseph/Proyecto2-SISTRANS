@@ -45,7 +45,7 @@ public class BodegaController {
         }
     }
 
-    // RFC 1 - Obtener el índice de ocupación de cada bodega
+    // RFC1
     @GetMapping("/bodegas/ocupacion")
     public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion(@RequestBody List<Producto> productos) {
         try {
