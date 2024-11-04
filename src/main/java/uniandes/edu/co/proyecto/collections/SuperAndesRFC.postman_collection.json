@@ -95,6 +95,39 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8080/proyecto/bodegas/ocupacion",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"nombre\": \"Producto C\",\r\n        \"presentacion\": \"Ziplock\",\r\n        \"volumen\": 4.5,\r\n        \"peso\": 8.0,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 2,\r\n            \"nombre\": \"No Perecederos\",\r\n            \"descripcion\": \"Productos de larga duración\",\r\n            \"caracteristicas_almacenamiento\": \"Almacenamiento en seco\"\r\n        },\r\n        \"codigoDeBarras\": \"0000000003\",\r\n        \"costoEnBodega\": 4500.0,\r\n        \"precioUnitario\": 2000.0,\r\n        \"unidadDeMedida\": \"ml\",\r\n        \"cantidadPresentacion\": 4\r\n    },\r\n    {\r\n        \"nombre\": \"Leche\",\r\n        \"presentacion\": \"Botella\",\r\n        \"volumen\": 1.0,\r\n        \"peso\": 1.2,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 1,\r\n            \"nombre\": \"Perecederos\",\r\n            \"descripcion\": \"Productos que caducan\",\r\n            \"caracteristicas_almacenamiento\": \"Refrigeración\"\r\n        },\r\n        \"codigoDeBarras\": \"001\",\r\n        \"costoEnBodega\": 2000.0,\r\n        \"precioUnitario\": 2500.0,\r\n        \"unidadDeMedida\": \"Litro\",\r\n        \"cantidadPresentacion\": 1\r\n    },\r\n    {\r\n        \"nombre\": \"Carne de Res\",\r\n        \"presentacion\": \"Paquete\",\r\n        \"volumen\": 0.8,\r\n        \"peso\": 1.5,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 2,\r\n            \"nombre\": \"No Perecederos\",\r\n            \"descripcion\": \"Productos de larga duración\",\r\n            \"caracteristicas_almacenamiento\": \"Almacenamiento en seco\"\r\n        },\r\n        \"codigoDeBarras\": \"002\",\r\n        \"costoEnBodega\": 5000.0,\r\n        \"precioUnitario\": 7500.0,\r\n        \"unidadDeMedida\": \"Kilogramo\",\r\n        \"cantidadPresentacion\": 1\r\n    },\r\n    {\r\n        \"nombre\": \"Producto Prueba\",\r\n        \"presentacion\": \"Caja\",\r\n        \"volumen\": 0.5,\r\n        \"peso\": 5.0,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 1,\r\n            \"nombre\": \"Perecederos\",\r\n            \"descripcion\": \"Productos que caducan\",\r\n            \"caracteristicas_almacenamiento\": \"Refrigeración\"\r\n        },\r\n        \"codigoDeBarras\": \"003\",\r\n        \"costoEnBodega\": 1000.0,\r\n        \"precioUnitario\": 1500.0,\r\n        \"unidadDeMedida\": \"Kg\",\r\n        \"cantidadPresentacion\": 10\r\n    },\r\n    {\r\n        \"nombre\": \"Producto A\",\r\n        \"presentacion\": \"Caja\",\r\n        \"volumen\": 0.5,\r\n        \"peso\": 1.0,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 1,\r\n            \"nombre\": \"Perecederos\",\r\n            \"descripcion\": \"Productos que caducan\",\r\n            \"caracteristicas_almacenamiento\": \"Refrigeración\"\r\n        },\r\n        \"codigoDeBarras\": \"0000000001\",\r\n        \"costoEnBodega\": 1000.0,\r\n        \"precioUnitario\": 1200.0,\r\n        \"unidadDeMedida\": \"gr\",\r\n        \"cantidadPresentacion\": 10\r\n    },\r\n    {\r\n        \"nombre\": \"Producto B\",\r\n        \"presentacion\": \"Bolsa\",\r\n        \"volumen\": 1.5,\r\n        \"peso\": 2.0,\r\n        \"categoria_codigo\": {\r\n            \"codigo\": 2,\r\n            \"nombre\": \"No Perecederos\",\r\n            \"descripcion\": \"Productos de larga duración\",\r\n            \"caracteristicas_almacenamiento\": \"Almacenamiento en seco\"\r\n        },\r\n        \"codigoDeBarras\": \"0000000002\",\r\n        \"costoEnBodega\": 1500.0,\r\n        \"precioUnitario\": 1800.0,\r\n        \"unidadDeMedida\": \"ml\",\r\n        \"cantidadPresentacion\": 5\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/proyecto/bodegas/ocupacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"proyecto",
+						"bodegas",
+						"ocupacion"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
