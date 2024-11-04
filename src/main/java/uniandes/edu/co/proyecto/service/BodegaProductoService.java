@@ -20,14 +20,14 @@ public class BodegaProductoService {
 
     @Transactional(isolation = Isolation.SERIALIZABLE, rollbackFor = Exception.class)
     public List<Map<String, Object>> obtenerDocumentosIngreso(String nombreSucursal, String nombreBodega) throws InterruptedException {
-        Thread.sleep(100);  
+        Thread.sleep(30000);  
         List<Object[]> resultados = bodegaProductoRepository.findDocumentosIngresoBodega(nombreSucursal, nombreBodega);
         return procesarResultados(resultados);
     }
 
     @Transactional(isolation = Isolation.READ_COMMITTED, rollbackFor = Exception.class)
     public List<Map<String, Object>> obtenerDocumentosIngresoReadCommitted(String nombreSucursal, String nombreBodega) throws InterruptedException {
-        Thread.sleep(100);  
+        Thread.sleep(30000);  
         List<Object[]> resultados = bodegaProductoRepository.findDocumentosIngresoBodega(nombreSucursal, nombreBodega);
         return procesarResultados(resultados);
     }

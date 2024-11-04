@@ -44,7 +44,7 @@ public class BodegaController {
         }
     }
 
-    // RFC 1 - Obtener el índice de ocupación de cada bodega
+    // RFC1
     @GetMapping("/bodegas/ocupacion/{productos}")
     public ResponseEntity<Collection<IndiceOcupacionBodega>> obtenerIndiceDeOcupacion(@PathVariable("productos") List<String> productos) {
         try {
@@ -58,29 +58,4 @@ public class BodegaController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    
-    //RFC 3 
-    // @GetMapping("/bodegas")
-    // public ResponseEntity<Collection<Bodega>> getBodegas(@RequestParam(required = false) Integer id) {
-    //     try {
-    //         if (id != null) {
-    //             Bodega bodega = bodegaRepository.findBodegaById(id);
-
-    //             if (bodega != null) {
-
-    //                 return new ResponseEntity<>();
-
-
-    //             } else {
-
-    //                 return new ResponseEntity<>(Collections.emptyList(), HttpStatus.NOT_FOUND);
-    //             }
-    //         } else {
-
-    //             return new ResponseEntity<>(bodegaRepository.findAllBodegas(), HttpStatus.OK);
-    //         }
-    //     } catch (Exception e) {
-    //         return new ResponseEntity<>(Collections.emptyList(), HttpStatus.INTERNAL_SERVER_ERROR);
-    //     }
-    // }
 }

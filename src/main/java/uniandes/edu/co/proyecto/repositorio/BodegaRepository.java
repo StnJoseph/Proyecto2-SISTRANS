@@ -33,15 +33,7 @@ public interface BodegaRepository extends JpaRepository<Bodega, String> {
     @Query(value = "SELECT * FROM bodegas", nativeQuery = true)
     Collection<Bodega> findAllBodegas();
 
-    //@Query(value = "SELECT * FROM bodega WHERE id = :id", nativeQuery = true)
-    //Bodega findBodegaById(@Param("id") int id);
-   
-    //@Modifying
-    //@Transactional
-    //@Query(value = "UPDATE bodega SET nombre = :nombre, tamanio = :tamanio WHERE id = :id", nativeQuery = true)
-    //void updateBodega(@Param("id") long id, @Param("nombre") String nombre, @Param("tamanio") Integer tamanio);
-
     //RFC 1 
-    @Query(value =  "SELECT b.nombre nombreBodega, SUM(ip.cantidad * p.volumen) volumenOcupado, b.tamanio capacidadBodega, ROUND((SUM(ip.cantidad * p.volumen) / b.tamanio) * 100, 2) porcentajeOcupacion FROM bodegas b INNER JOIN inventariodeproductos ip ON b.nombre = ip.bodega_nombre INNER JOIN productos p ON ip.producto_codigodebarras = p.codigo_de_barras WHERE p.codigo_de_barras = :codigo_de_barras GROUP BY b.nombre, b.tamanio", nativeQuery = true)         
+    @Query(value = "SELECT b.nombre nombreBodega, SUM(ip.cantidad * p.volumen) volumenOcupado, b.tamanio capacidadBodega, ROUND((SUM(ip.cantidad * p.volumen) / b.tamanio) * 100, 2) porcentajeOcupacion FROM bodegas b INNER JOIN inventariodeproductos ip ON b.nombre = ip.bodega_nombre INNER JOIN productos p ON ip.producto_codigodebarras = p.codigo_de_barras WHERE p.codigo_de_barras = :codigo_de_barras GROUP BY b.nombre, b.tamanio", nativeQuery = true)         
     IndiceOcupacionBodega obtenerIndiceDeOcupacion(@Param("codigo_de_barras") String codigo_de_barras);
 }

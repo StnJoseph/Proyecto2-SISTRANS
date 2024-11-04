@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import uniandes.edu.co.proyecto.modelo.OrdenDeCompra;
 import uniandes.edu.co.proyecto.modelo.Producto;
 import uniandes.edu.co.proyecto.repositorio.ProductoRepository;
 import uniandes.edu.co.proyecto.repositorio.ProductoRepository.ProductoInventarioDeProductos;
@@ -22,6 +23,16 @@ public class ProductoController {
 
     @Autowired
     private ProductoRepository productoRepository;
+
+    @GetMapping("/productos")
+    public ResponseEntity<Collection<Producto>> daProducto() {
+        try {
+            Collection<Producto> productos = productoRepository.findAllProductos();
+            return ResponseEntity.ok(productos);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 
     @PostMapping("/productos/new/save")
     public ResponseEntity<String> crearProducto(@RequestBody Producto producto) {
